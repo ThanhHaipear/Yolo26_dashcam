@@ -1,34 +1,31 @@
 # YOLO26 Dashcam Detection
 
-Real-time object detection demo for dashcam and webcam streams using Ultralytics YOLO and OpenCV.
+Real-time object detection demo for dashcam and webcam streams using Python, OpenCV, and Ultralytics YOLO.
 
-This project runs inference directly from a camera feed, draws detection boxes on each frame, and overlays FPS to demonstrate real-time performance. It is a compact computer vision demo suitable for a portfolio, internship application, or CV submission.
+This project demonstrates a practical computer vision pipeline that loads a trained YOLO model, captures frames from a live camera, performs real-time inference, draws detection results on each frame, and overlays FPS for performance monitoring.
 
-## Project Overview
+## Overview
 
-The goal of this project is to build a simple but practical real-time detection pipeline for camera input. The application:
+This repository was built as a compact deployment-style demo rather than a notebook experiment. The focus is on running a trained detection model on a live video source and presenting results in a form that is easy to evaluate in a portfolio or CV review.
 
-- loads a trained YOLO model from a local `.pt` file
-- reads frames from a webcam or dashcam source
-- performs object detection on each frame
-- renders bounding boxes and labels on the output
-- displays live FPS for runtime monitoring
+## Key Highlights
+
+- Built a real-time object detection application for webcam or dashcam input
+- Integrated Ultralytics YOLO inference with OpenCV video capture and visualization
+- Displayed live bounding boxes, class predictions, and FPS on streaming frames
+- Structured the project as a lightweight runnable demo suitable for portfolio presentation
 
 ## Demo
 
-Project screenshots and demo video:
-
-### Demo Screenshots
+### Screenshots
 
 ![Detection Result 1](assets/demo/demo-1.jpg)
 
 ![Detection Result 2](assets/demo/demo-2.jpg)
 
-### Demo Video
+### Video
 
-Watch the full demo on YouTube:
-
-[Watch demo video](https://youtube.com/shorts/jnz_Q4mqbDE)
+[Watch demo on YouTube](https://youtube.com/shorts/jnz_Q4mqbDE)
 
 ## Tech Stack
 
@@ -37,34 +34,32 @@ Watch the full demo on YouTube:
 - Ultralytics YOLO
 - PyTorch model weights (`.pt`)
 
-## Repository Structure
+## What The Application Does
+
+The script in [camhanhtrinh.py](e:\Computer_Vision\DASK_CAM\demo1\camhanhtrinh.py:1) performs the following steps:
+
+- resolves the model path from the current project directory
+- loads the trained YOLO model from `supbest.pt`
+- opens a camera stream with OpenCV
+- runs inference on each incoming frame
+- draws detection boxes and labels on the output frame
+- computes and displays FPS in real time
+- exits cleanly when the user presses `q`
+
+## Project Structure
 
 ```text
 demo1/
 |- assets/
 |  \- demo/
+|     |- demo-1.jpg
+|     |- demo-2.jpg
 |     \- .gitkeep
 |- camhanhtrinh.py
 |- supbest.pt
 |- README.md
 |- .gitignore
 ```
-
-## Main File
-
-The main application entry point is:
-
-```text
-camhanhtrinh.py
-```
-
-Core behavior in the script:
-
-- resolves the model path from the current project directory
-- opens the camera stream using OpenCV
-- runs YOLO inference on each frame
-- visualizes predictions with `result.plot()`
-- calculates and displays FPS
 
 ## How To Run
 
@@ -74,17 +69,17 @@ Core behavior in the script:
 pip install ultralytics opencv-python
 ```
 
-If your environment does not already include PyTorch, install it first based on your CUDA or CPU setup.
+If your environment does not already include PyTorch, install the correct version first for your CPU or CUDA setup.
 
 ### 2. Prepare the model
 
-Make sure the model file exists in the project root:
+Place the trained model file in the project root:
 
 ```text
 supbest.pt
 ```
 
-### 3. Start the application
+### 3. Run the demo
 
 ```bash
 python camhanhtrinh.py
@@ -92,42 +87,41 @@ python camhanhtrinh.py
 
 ## Configuration
 
-You can edit these values in `camhanhtrinh.py`:
+You can adjust these values directly in [camhanhtrinh.py](e:\Computer_Vision\DASK_CAM\demo1\camhanhtrinh.py:1):
 
-- `MODEL_PATH`: path to the trained YOLO model
-- `CAMERA_INDEX`: webcam index, usually `0` or `1`
-- `CONF_THRESHOLD`: confidence threshold for detections
-- `IMGSZ`: input image size for inference
-- `FLIP_FRAME`: set `True` if the camera image is mirrored
+- `MODEL_PATH`: path to the YOLO model file
+- `CAMERA_INDEX`: camera source index, commonly `0` or `1`
+- `CONF_THRESHOLD`: detection confidence threshold
+- `IMGSZ`: inference image size
+- `FLIP_FRAME`: enable if the camera feed is mirrored
 
-## Notes
+## Practical Notes
 
-- Press `q` to exit the application.
-- If the camera does not open, try changing `CAMERA_INDEX` from `1` to `0`, `2`, or `3`.
-- On Windows, `cv2.CAP_DSHOW` may help if camera initialization is unstable.
+- Press `q` to stop the application.
+- If the camera does not open, try changing `CAMERA_INDEX`.
+- On Windows, `cv2.CAP_DSHOW` can help if camera startup is unstable.
+- The current script is designed for live camera inference, not batch offline evaluation.
 
-## Portfolio / CV Positioning
+## CV-Ready Project Summary
 
-If you want this repository to look stronger on your CV, keep the README focused on measurable value. You should add:
+You can describe this project on your CV with wording like:
 
-- the problem you solved
-- the model or dataset source
-- the hardware used for testing
-- example classes detected
-- average FPS or runtime observations
-- 1 short paragraph describing your contribution if this was part of a larger project
+> Built a real-time object detection demo using Python, OpenCV, and Ultralytics YOLO, enabling live camera inference with annotated bounding boxes and FPS monitoring for practical computer vision deployment.
 
-Suggested resume summary:
+Shorter version:
 
-> Built a real-time dashcam object detection demo using Python, OpenCV, and Ultralytics YOLO; integrated live camera inference, bounding-box visualization, and FPS monitoring for practical computer vision deployment.
+> Developed a real-time YOLO-based dashcam detection demo with live visualization and performance monitoring.
 
-## Future Improvements
+## Suggested Improvements
 
-- support video file input in addition to webcam input
+To make this repository stronger for future interviews, the next upgrades should be:
+
+- support input from video files in addition to webcams
 - save annotated output video
-- export model to ONNX for lighter deployment
-- add CLI arguments for camera index and confidence threshold
-- report per-frame latency and detection counts
+- add command-line arguments for runtime configuration
+- report latency, FPS, and detection counts more explicitly
+- export the model to ONNX for lightweight deployment
+- document detected classes and test environment
 
 ## Author
 
