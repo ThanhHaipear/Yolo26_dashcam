@@ -16,29 +16,19 @@ The goal of this project is to build a simple but practical real-time detection 
 
 ## Demo
 
-Add your own media files into `assets/demo/`, then update the paths below.
+Project screenshots and demo video:
 
-### Demo GIF
+### Demo Screenshots
 
-![YOLO Dashcam Demo](assets/demo/demo.gif)
+![Detection Result 1](assets/demo/demo-1.jpg)
 
-### Demo Screenshot
-
-![Detection Result](assets/demo/demo-frame.jpg)
+![Detection Result 2](assets/demo/demo-2.jpg)
 
 ### Demo Video
 
-GitHub README does not play local video files inline reliably. Use one of these options:
+Watch the full demo on YouTube:
 
-1. Upload a short demo video to LinkedIn, YouTube, Google Drive, or GitHub Release and paste the public link here.
-2. Convert a short screen recording to `demo.gif` and place it in `assets/demo/`.
-3. Add 2 to 4 screenshots that show different detection results.
-
-Example:
-
-```md
-[Watch demo video](https://your-link-here)
-```
+[Watch demo video](https://youtube.com/shorts/jnz_Q4mqbDE)
 
 ## Tech Stack
 
